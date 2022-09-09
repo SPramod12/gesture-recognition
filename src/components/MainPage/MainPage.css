@@ -1,8 +1,12 @@
 .instruct{
+    margin-left: auto;
+    margin-right: auto;
     width: 50vw;
+    min-width: 300px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    text-align: left;
 }
 
 .upload{
@@ -19,10 +23,26 @@
     margin-bottom: auto;
     width: auto;
     display: flex;
+    min-width: 300px;
     width: 50vw;
     justify-content: space-evenly;
     flex-wrap:wrap;
 }
 input{
     margin: 5px;
+}
+
+p{
+    margin: 5px;
+}
+
+.demogifs{
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    display: flex;
+    min-width: 300px;
+    width: 50vw;
+    justify-content: space-evenly;
+    flex-wrap:wrap;
 }

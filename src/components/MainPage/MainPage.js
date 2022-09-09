@@ -8,7 +8,7 @@ import tumbs_up from '../../gifs/tumbs_up.gif'
 
 function MainPage() {
     const [selectedFile, setSelectedFile] = useState(null)
-    const [prediction, setPrediction] = useState('submit for result')
+    const [prediction, setPrediction] = useState('')
     const [dropDown, setDropDown] = useState(false)
 
     const inputRef = useRef(null);

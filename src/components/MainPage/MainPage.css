@@ -9,7 +9,21 @@
     text-align: left;
 }
 
+.result{
+    border: 1px solid black;
+    min-height: 25px;
+    border-radius: 10px;
+    width:150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .upload{
+    background-color: #629A71;
+    border-radius: 10px;
+    max-width: 50vw;
+    min-width: 280px;
+    box-shadow: 1px 1px 1px 1px black;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -37,6 +51,7 @@ p{
 }
 
 .demogifs{
+    margin-top: 25px;
     margin-left: auto;
     margin-right: auto;
     width: auto;

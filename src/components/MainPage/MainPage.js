@@ -1,4 +1,4 @@
-import {useState, useRef} from 'react'
+import {useState, useRef, useEffect} from 'react'
 import './MainPage.css'
 import leftswipe from '../../gifs/left_swipe.gif'
 import rightswipe from '../../gifs/right_swipe.gif'
@@ -12,7 +12,11 @@ function MainPage() {
     const [dropDown, setDropDown] = useState(false)
 
     const inputRef = useRef(null);
-
+    useEffect(()=>{
+        fetch('https://gesture-recognition-api.herokuapp.com/', {
+            method: 'GET',
+        });
+    }, [])
     const predict_api = (e)=>{
         setPrediction('Loading...')
         e.preventDefault()

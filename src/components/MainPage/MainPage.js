@@ -8,12 +8,13 @@ import tumbs_up from '../../gifs/tumbs_up.gif'
 
 function MainPage() {
     const [selectedFile, setSelectedFile] = useState(null)
-    const [prediction, setPrediction] = useState('')
+    const [prediction, setPrediction] = useState('submit for result')
+    const [dropDown, setDropDown] = useState(false)
 
     const inputRef = useRef(null);
 
     const predict_api = (e)=>{
-        setPrediction('')
+        setPrediction('Loading...')
         e.preventDefault()
         const formData = new FormData();
         formData.append('video', selectedFile);
@@ -48,14 +49,14 @@ function MainPage() {
                     </div>
                 </form>
             </div>
-            <h5>{prediction}</h5>
+            <h5 className='result'>{prediction}</h5>
             <div className='instruct'>
-                <h4 style={{textAlign:'left'}}>Instructions:</h4>
+                <h4 style={{margin:'3px'}}>Instructions:</h4>
                 <p>
                     1. Record a video with one of the following gestures right swipe, left swipe, stop, tumbs down and tumbs up
                 </p>
                 <p>
-                    2. Make sure the video length is below 3 seconds with less than 3Mb size
+                    2. Make sure the video length is below 3 seconds with less than 5Mb size
                 </p>
                 <p>
                     3. Upload the video and click on submit
@@ -64,7 +65,9 @@ function MainPage() {
                     4. App will recognise the gesture and returns the result
                 </p>
             </div>
-            <div className='demogifs'>
+            <button onClick={()=>setDropDown(!dropDown)}>Demo</button>
+            {
+            dropDown && <div className='demogifs'>
                 <div>
                     <img src={leftswipe} alt='Left Swipe'/>
                     <p>Left Swipe</p>  
@@ -86,6 +89,7 @@ function MainPage() {
                     <p>Tumbs Up</p>  
                 </div>
             </div>
+            }
         </>
     )
 }

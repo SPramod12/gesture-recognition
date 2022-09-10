@@ -25,7 +25,6 @@ function MainPage() {
         e.preventDefault()
         const formData = new FormData();
         formData.append('video', selectedFile);
-        console.log(formData)
         fetch('https://gesture-recognition-api.herokuapp.com/predict', {
             method: 'POST',
             body: formData,
@@ -93,11 +92,11 @@ function MainPage() {
                     <p>Stop</p>  
                 </div>
                 <div>
-                    <img src={tumbs_down} alt='Tumbs Down'/>
+                    <img src={tumbs_down} alt='Thumbs Down'/>
                     <p>Tumbs Down</p>  
                 </div>
                 <div>
-                    <img src={tumbs_up} alt='Tumbs Up'/>
+                    <img src={tumbs_up} alt='Thumbs Up'/>
                     <p>Tumbs Up</p>  
                 </div>
             </div>

@@ -10,6 +10,8 @@ function MainPage() {
     const [selectedFile, setSelectedFile] = useState(null)
     const [prediction, setPrediction] = useState('')
     const [dropDown, setDropDown] = useState(false)
+    const [probList, setProbList] = useState({})
+    const [showProbs, setShowProbs] = useState(false)
 
     const inputRef = useRef(null);
     useEffect(()=>{
@@ -17,6 +19,7 @@ function MainPage() {
             method: 'GET',
         });
     }, [])
+    
     const predict_api = (e)=>{
         setPrediction('Loading...')
         e.preventDefault()
@@ -26,7 +29,10 @@ function MainPage() {
         fetch('https://gesture-recognition-api.herokuapp.com/predict', {
             method: 'POST',
             body: formData,
-        }).then(res=>res.json()).then(res=>setPrediction(res['prediction']));
+        }).then(res=>res.json()).then(res=>{
+            setProbList(res['probs'])
+            setPrediction(res['prediction'])
+        });
         resetFileInput()
         setSelectedFile(null)
     };
@@ -54,6 +60,8 @@ function MainPage() {
                 </form>
             </div>
             <h5 className='result'>{prediction}</h5>
+            {prediction!=='' && prediction!== 'Loading...' && <button onClick={()=>setShowProbs(!showProbs)}>Show Probability</button>}
+            <p>{showProbs && `Right Swipe: ${probList['Right Swipe']} Left Swipe: ${probList['Left Swipe']} Stop: ${probList['Stop']} Thumbs Up: ${probList['Tumbs Up']} Thumbs Down: ${probList['Tumbs Down']}`}</p>
             <div className='instruct'>
                 <h4 style={{margin:'3px'}}>Instructions:</h4>
                 <p>
